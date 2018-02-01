@@ -16,9 +16,9 @@ int main(int argc, char *argv[])
 
 {
 
-    SDL_Surface *ecran = NULL, *imageDeFond = NULL, *Play_before = NULL, *Quit_before = NULL, *Settings_before = NULL;
+    SDL_Surface *ecran = NULL, *imageDeFond = NULL, *Play_before = NULL, *Play_after =NULL, *Quit_before = NULL, *Settings_before = NULL;
     SDL_Event event;
-    SDL_Rect positionFond, positionPlay_before, positionQuit_before, positionSettings_before;
+    SDL_Rect positionFond, positionPlay_before, positionPlay_after, positionQuit_before, positionSettings_before;
  
 //position fond
     positionFond.x = 0;
