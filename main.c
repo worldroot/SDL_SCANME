@@ -58,14 +58,14 @@ int main(int argc, char *argv[])
 
 
     //chargement du bouton play_before
-    Play_before = IMG_Load("images/play2.png");
+    Play_before = IMG_Load("images/play1 (before).png");
     SDL_BlitSurface(Play_before, NULL, ecran, &positionPlay_before);
     //**********************************
     //chargement du bouton quit_before
     Quit_before = IMG_Load("images/QUIT(before).png");
     SDL_BlitSurface(Quit_before, NULL, ecran ,&positionQuit_before);
     //**********************************
-    Settings_before = IMG_Load("images/settings2(before).png");
+    Settings_before = IMG_Load("images/settings1(before).png");
     SDL_BlitSurface(Settings_before, NULL, ecran, &positionSettings_before);
 
 
