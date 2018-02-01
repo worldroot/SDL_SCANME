@@ -26,6 +26,9 @@ int main(int argc, char *argv[])
 //position play_before
     positionPlay_before.x = 303;
     positionPlay_before.y = 202;
+//position play_after
+    positionPlay_after.x = ;
+    positionPlay_after.y = ;
 //position quit_before
     positionQuit_before.x = 500;
     positionQuit_before.y = 202;
