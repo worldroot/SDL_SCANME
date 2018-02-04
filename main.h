@@ -9,5 +9,6 @@
 
 
 void pause();
+int menu1();
 
 #endif
