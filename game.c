@@ -206,9 +206,9 @@ if(test==1){break;}
      SDL_FreeSurface(Settings_after);
       Mix_FreeMusic(musique); //Libération de la musique
     Mix_CloseAudio(); //Fermeture de l'API
-   // TTF_CloseFont(police);
-    //TTF_Quit();
-  //  SDL_FreeSurface(texte);
+    TTF_CloseFont(police);
+    TTF_Quit();
+    SDL_FreeSurface(texte);
     SDL_Quit();
 
  
