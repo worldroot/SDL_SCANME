@@ -17,15 +17,15 @@ int menu1 (int *n)
     int x=0;
     int y;
     int test=0;
-   // TTF_Font *police = NULL;
-    // SDL_Color couleurNoire = {0, 0, 0};
+    TTF_Font *police = NULL;
+     SDL_Color couleurNoire = {0, 0, 0};
 
     SDL_Surface *ecran = NULL, *texte=NULL, *imageDeFond = NULL, *Play_before = NULL, *Play_after =NULL, *Quit_before = NULL, *Quit_after = NULL, *Settings_before = NULL, *Settings_after = NULL;
     SDL_Event event;
     SDL_Rect positionFond, positiontexte, positionPlay_before, positionPlay_after, positionQuit_before, positionQuit_after, positionSettings_before, positionSettings_after;
  
 
- // TTF_Init();
+  TTF_Init();
      if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1) //Initialisation de l'API Mixer
 
    {
@@ -34,8 +34,8 @@ int menu1 (int *n)
 
    }    
    //position texte
-   positiontexte.x=303;
-   positiontexte.y=150;
+   positiontexte.x=0;
+   positiontexte.y=0;
 //position fond
     positionFond.x = 0;
     positionFond.y = 0;
@@ -43,22 +43,22 @@ int menu1 (int *n)
     positionPlay_before.x = 303;
     positionPlay_before.y = 202;
 //position play_after
-    positionPlay_after.x = 303;
-    positionPlay_after.y = 202;
+    positionPlay_after.x = 304;
+    positionPlay_after.y = 203;
 //position quit_before
     positionQuit_before.x = 500;
     positionQuit_before.y = 202;
 //position quit_after
-    positionQuit_after.x = 500;
-    positionQuit_after.y = 202;
+    positionQuit_after.x = 501;
+    positionQuit_after.y = 203;
 //position settings_before
     positionSettings_before.x = 106;
     positionSettings_before.y = 202;
 //position settings_after
-    positionSettings_after.x = 106;
-    positionSettings_after.y = 202;
+    positionSettings_after.x = 107;
+    positionSettings_after.y = 203;
     //doublebuf pour fluidite du mouvement + hwsurface utilisation de la carte graphique
-    SDL_Init(SDL_INIT_VIDEO | SDL_HWSURFACE | SDL_DOUBLEBUF);
+    SDL_Init(SDL_INIT_VIDEO | SDL_HWSURFACE | SDL_DOUBLEBUF | SDL_FULLSCREEN);
 
   SDL_WM_SetCaption("SDL_Mixer", NULL);
  Mix_Music *musique; //Création du pointeur de type Mix_Music
@@ -66,15 +66,15 @@ int menu1 (int *n)
   Mix_PlayMusic(musique, -1);
 
 /* Chargement de la police */
-  //  police = TTF_OpenFont("angelina.TTF", 65);
+    police = TTF_OpenFont("caviar_dreams/CaviarDreams.ttf", 15);
     /* Écriture du texte dans la SDL_Surface texte en mode Blended (optimal) */
-  // texte = TTF_RenderText_Blended(police, "TEST TTF!", couleurNoire);  
+   texte = TTF_RenderText_Blended(police, "ESC to quit", couleurNoire);  
 
     // image de l'icone
     SDL_WM_SetIcon(IMG_Load("sdl_icone.bmp"), NULL);
     //*****************
     // video settings
-    ecran = SDL_SetVideoMode(800, 600, 32, SDL_HWSURFACE );
+    ecran = SDL_SetVideoMode(800, 600, 32, SDL_HWSURFACE | SDL_DOUBLEBUF | SDL_FULLSCREEN);
     //*****************
     // titre de la fenetre
     SDL_WM_SetCaption("SCANME Game", NULL);
@@ -113,7 +113,7 @@ int menu1 (int *n)
 
 
 
- // SDL_BlitSurface(texte, NULL, ecran, &positiontexte); /* Blit du texte */
+  SDL_BlitSurface(texte, NULL, ecran, &positiontexte); /* Blit du texte */
 
    
    while (continuer)
@@ -152,16 +152,28 @@ int menu1 (int *n)
                                  test=1;
                                  break;
                             }
-
-                           
-                             break; 
-                        
-                       
-                    // chargement menu autre
-                    
-                   
+                             break;
                 }
-            break;
+                break;
+                  case SDL_MOUSEMOTION:
+                  //bouton play
+                            if((event.motion.x >=400) &&(event.motion.x<430) && (event.motion.y>=300) &&(event.motion.y <= 315))
+                            {
+                                x=3;
+                            }                            
+                            
+                //bouton settings
+                            if((event.motion.x >=200) &&(event.motion.x<230) && (event.motion.y>=300) &&(event.motion.y <= 315))
+                            {
+                                x=2;
+                            }   
+                            if((event.motion.x >=500) &&(event.motion.x<530) && (event.motion.y>=300) &&(event.motion.y <= 315))
+                            {
+                                x=1;
+                            }                             
+                            break;
+
+            
         }
         if (x==1){
 SDL_BlitSurface(Play_before, NULL, ecran, &positionPlay_before);
@@ -227,7 +239,7 @@ int menu2 (int *n)
     int x=0;
     int y;
     
-    SDL_Surface *ecran = NULL, *imageDeFond = NULL, *Play_before = NULL, *Play_after =NULL, *Quit_before = NULL, *Quit_after = NULL;
+    SDL_Surface *ecran = NULL, *imageDeFond = NULL, *Play_before = NULL, *Play_after =NULL;
     SDL_Event event;
     SDL_Rect positionFond, positionPlay_before, positionPlay_after;
  
@@ -239,7 +251,7 @@ int menu2 (int *n)
     positionPlay_before.y = 202;
 //position play_after
     positionPlay_after.x = 303;
-    positionPlay_after.y = 50;
+    positionPlay_after.y = 0;
 
     //doublebuf pour fluidite du mouvement + hwsurface utilisation de la carte graphique
     SDL_Init(SDL_INIT_VIDEO | SDL_HWSURFACE | SDL_DOUBLEBUF);
