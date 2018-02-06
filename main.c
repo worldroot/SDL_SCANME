@@ -15,9 +15,20 @@
 int main()
 
 {
-   int x;
-   x=menu1();
-   return 0;
+    int n;
+   int x,y;
+   n=1;
 
+    if (n==1)
+        x=menu1(&n);
+ if (n==2)
+      x=menu2(&n);
 
+   
+    
+  
+       
+    
+    
+ return 0;
 }
